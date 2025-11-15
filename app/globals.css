@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Eurostile Extended Bold Font */
+@font-face {
+  font-family: 'Eurostile Extended';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Eurostile%20Extended%20Bold.ttf') format('truetype'),
+       url('/fonts/EurostileExtended-Bold.woff2') format('woff2'),
+       url('/fonts/EurostileExtended-Bold.woff') format('woff');
+}
+
+/* Eurostile Regular (fallback and for button) */
+@font-face {
+  font-family: 'Eurostile';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/Eurostile.woff2') format('woff2'),
+       url('/fonts/Eurostile.woff') format('woff'),
+       url('/fonts/Eurostile.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Eurostile';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/Eurostile-Bold.woff2') format('woff2'),
+       url('/fonts/Eurostile-Bold.woff') format('woff'),
+       url('/fonts/Eurostile-Bold.ttf') format('truetype');
+}
+
+/* Apply Eurostile as utility class */
+@layer utilities {
+  .font-eurostile {
+    font-family: 'Eurostile Extended', 'Eurostile', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+}
+
