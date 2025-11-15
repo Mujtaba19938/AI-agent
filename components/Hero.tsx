@@ -58,21 +58,7 @@ export default function Hero() {
           <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wider text-white uppercase font-eurostile leading-[0.9]">
             <div className="mb-1 sm:mb-2">THEY WORK</div>
             <div className="relative flex items-center justify-center">
-              <motion.span
-                className="inline-block"
-                animate={{
-                  y: [0, -5, 0],
-                  transition: {
-                    duration: 1.8,
-                    repeat: Infinity,
-                    repeatType: 'reverse',
-                    ease: 'easeInOut',
-                    delay: 0.5
-                  }
-                }}
-              >
-                YOU
-              </motion.span>
+              <span className="inline-block">YOU</span>
               <span className="ml-1 sm:ml-2">SLEEP</span>
             </div>
           </h2>
