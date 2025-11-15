@@ -9,51 +9,15 @@ export default function Hero() {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
-    // Use requestAnimationFrame for smoother animation start
-    const timer = requestAnimationFrame(() => {
-      setIsVisible(true);
-    });
+    // Trigger fade-in animation on mount
+    setIsVisible(true);
     
     // Ensure video plays programmatically as fallback
-    const playVideo = () => {
-      if (videoRef.current) {
-        const playPromise = videoRef.current.play();
-        
-        if (playPromise !== undefined) {
-          playPromise.catch((error) => {
-            // If autoplay fails, mute and try again (for mobile browsers)
-            if (videoRef.current) {
-              videoRef.current.muted = true;
-              videoRef.current.play().catch(e => console.log('Video play failed:', e));
-            }
-          });
-        }
-      }
-    };
-    
-    // Try to play immediately
-    playVideo();
-    
-    // Also try on user interaction (for mobile browsers)
-    const handleInteraction = () => {
-      playVideo();
-      document.removeEventListener('click', handleInteraction);
-      document.removeEventListener('touchstart', handleInteraction);
-    };
-    
-    document.addEventListener('click', handleInteraction);
-    document.addEventListener('touchstart', handleInteraction);
-    
-    return () => {
-      cancelAnimationFrame(timer);
-      document.removeEventListener('click', handleInteraction);
-      document.removeEventListener('touchstart', handleInteraction);
-      
-      // Pause video when component unmounts
-      if (videoRef.current) {
-        videoRef.current.pause();
-      }
-    };
+    if (videoRef.current) {
+      videoRef.current.play().catch((error) => {
+        console.log('Video autoplay failed:', error);
+      });
+    }
   }, []);
 
   return (
@@ -65,16 +29,8 @@ export default function Hero() {
         loop
         muted
         playsInline
-        disablePictureInPicture
-        disableRemotePlayback
         preload="auto"
         className="absolute inset-0 w-full h-full object-cover z-0"
-        style={{
-          transform: 'translateZ(0)', // Force hardware acceleration
-          backfaceVisibility: 'hidden',
-          WebkitBackfaceVisibility: 'hidden',
-          WebkitTransform: 'translateZ(0)'
-        }}
       >
         <source src="/video/unicorn-1763210443879.webm" type="video/webm" />
         Your browser does not support the video tag.
@@ -94,108 +50,39 @@ export default function Hero() {
           }`}
         >
           {/* Headline */}
-          <motion.h1 
-            className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-wider text-white uppercase font-eurostile"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? { 
-              opacity: 1, 
-              y: 0,
-              transition: {
-                duration: 0.8,
-                ease: [0.16, 1, 0.3, 1]
-              }
-            } : {}}
-          >
+          <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-wider text-white uppercase font-eurostile">
             AI Agents?
-          </motion.h1>
+          </h1>
 
           {/* Sub-headline */}
-          <motion.h2 
-            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wider text-white uppercase font-eurostile leading-[0.9]"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? { 
-              opacity: 1, 
-              y: 0,
-              transition: {
-                duration: 0.8,
-                delay: 0.2,
-                ease: [0.16, 1, 0.3, 1]
-              }
-            } : {}}
-          >
-            <motion.div 
-              className="mb-1 sm:mb-2"
-              initial={{ opacity: 0, y: 10 }}
-              animate={isVisible ? { 
-                opacity: 1, 
-                y: 0,
-                transition: {
-                  duration: 0.6,
-                  delay: 0.3
-                }
-              } : {}}
-            >
-              THEY WORK
-            </motion.div>
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wider text-white uppercase font-eurostile leading-[0.9]">
+            <div className="mb-1 sm:mb-2">THEY WORK</div>
             <div className="relative flex items-center justify-center">
               <motion.span
                 className="inline-block"
-                initial={{ opacity: 0 }}
-                animate={isVisible ? {
-                  opacity: 1,
+                animate={{
+                  y: [0, -5, 0],
                   transition: {
-                    duration: 0.6,
-                    delay: 0.4
+                    duration: 1.8,
+                    repeat: Infinity,
+                    repeatType: 'reverse',
+                    ease: 'easeInOut',
+                    delay: 0.5
                   }
-                } : {}}
+                }}
               >
                 YOU
               </motion.span>
-              <motion.span 
-                className="ml-1 sm:ml-2"
-                initial={{ opacity: 0, x: 10 }}
-                animate={isVisible ? {
-                  opacity: 1,
-                  x: 0,
-                  transition: {
-                    duration: 0.6,
-                    delay: 0.5
-                  }
-                } : {}}
-              >
-                SLEEP
-              </motion.span>
+              <span className="ml-1 sm:ml-2">SLEEP</span>
             </div>
-          </motion.h2>
+          </h2>
 
           {/* CTA Button */}
-          <motion.div 
-            className="pt-4 sm:pt-6 md:pt-8"
-            initial={{ opacity: 0, y: 20 }}
-            animate={isVisible ? {
-              opacity: 1,
-              y: 0,
-              transition: {
-                duration: 0.6,
-                delay: 0.6,
-                ease: [0.16, 1, 0.3, 1]
-              }
-            } : {}}
-          >
-            <motion.button 
-              className="px-6 py-3 sm:px-8 sm:py-4 bg-white text-black font-eurostile font-bold text-base sm:text-lg tracking-wide hover:bg-red-500 hover:text-white transition-all duration-300 uppercase"
-              whileHover={{ 
-                scale: 1.05,
-                boxShadow: '0 0 20px rgba(255, 255, 255, 0.4)'
-              }}
-              whileTap={{ 
-                scale: 0.98,
-                boxShadow: '0 0 10px rgba(255, 255, 255, 0.2)'
-              }}
-            >
+          <div className="pt-4 sm:pt-6 md:pt-8">
+            <button className="px-6 py-3 sm:px-8 sm:py-4 bg-white text-black font-eurostile font-bold text-base sm:text-lg tracking-wide hover:bg-red-500 hover:text-white transition-all duration-300 uppercase">
               Get Started
-            </motion.button>
-          </motion.div>
+            </button>
+          </div>
         </div>
       </div>
     </section>
