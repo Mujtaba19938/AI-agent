@@ -44,7 +44,7 @@ export default function Navbar() {
                 <a
                   href={item.path}
                   onClick={handleNavigation}
-                  className="font-eurostile font-bold text-[#F44336] hover:text-white uppercase tracking-wide text-sm lg:text-base transition-colors duration-300 hover:drop-shadow-[0_0_8px_rgba(244,67,54,0.8)]"
+                  className="font-eurostile font-bold text-[#F44336] hover:text-white uppercase tracking-wide text-sm lg:text-base transition-colors duration-300"
                 >
                   {item.name}
                 </a>
