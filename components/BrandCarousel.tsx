@@ -20,23 +20,24 @@ export default function BrandCarousel() {
   const duplicatedBrands = [...brands, ...brands];
 
   return (
-    <section className="w-full py-12 relative bg-black">
+    <section className="w-full py-8 sm:py-10 md:py-12 relative bg-black">
       {/* Logo container */}
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+      <div className="max-w-7xl mx-auto px-2 sm:px-4 relative z-10">
         <div className="relative overflow-visible">
           <div className="flex animate-[marquee_30s_linear_infinite] whitespace-nowrap">
             {duplicatedBrands.map((brand, index) => (
               <div 
                 key={`brand-${index}`}
-                className="inline-flex items-center justify-center px-8"
+                className="inline-flex items-center justify-center px-2 sm:px-4 md:px-6 lg:px-8"
               >
-                <div className="relative w-32 h-16 md:w-40 md:h-20 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity duration-300">
+                <div className="relative w-20 h-10 xs:w-24 xs:h-12 sm:w-28 sm:h-14 md:w-32 md:h-16 lg:w-36 lg:h-18 flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity duration-300">
                   <Image
                     src={brand.logo}
                     alt={`${brand.name} logo`}
-                    width={120}
-                    height={60}
-                    className="object-contain w-full h-full p-2"
+                    width={0}
+                    height={0}
+                    sizes="(max-width: 640px) 80px, (max-width: 768px) 100px, 120px"
+                    className="object-contain w-auto h-full max-h-8 xs:max-h-10 sm:max-h-12 md:max-h-14 lg:max-h-16 p-1 sm:p-2"
                     priority={index < 4}
                     unoptimized
                   />
@@ -47,9 +48,9 @@ export default function BrandCarousel() {
         </div>
       </div>
       
-      {/* Gradient fades */}
-      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-black via-black/90 to-transparent z-20 pointer-events-none" />
-      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-black via-black/90 to-transparent z-20 pointer-events-none" />
+      {/* Gradient fades - adjust width on mobile */}
+      <div className="absolute inset-y-0 left-0 w-16 sm:w-24 md:w-32 bg-gradient-to-r from-black via-black/90 to-transparent z-20 pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-16 sm:w-24 md:w-32 bg-gradient-to-l from-black via-black/90 to-transparent z-20 pointer-events-none" />
     </section>
   );
 }

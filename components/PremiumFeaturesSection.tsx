@@ -55,7 +55,7 @@ export default function PremiumFeaturesSection() {
     <section 
       id="features" 
       ref={sectionRef}
-      className="relative w-full py-28 overflow-hidden"
+      className="relative w-full py-16 sm:py-20 md:py-24 lg:py-28 overflow-hidden"
       style={{
         background: 'linear-gradient(to bottom, #050505, #0c0606)'
       }}
@@ -102,7 +102,7 @@ export default function PremiumFeaturesSection() {
           transition={{ duration: 0.8 }}
         >
           <motion.h2 
-            className="text-4xl md:text-6xl font-bold font-eurostile tracking-wider text-[#F44336] mb-6"
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl font-bold font-eurostile tracking-wider text-[#F44336] mb-4 sm:mb-6"
           >
             {Array.from("FEATURES THAT WORK WHILE YOU SLEEP").map((char, i) => (
               <motion.span
@@ -125,7 +125,7 @@ export default function PremiumFeaturesSection() {
           </motion.h2>
           
           <motion.p 
-            className="text-xl text-gray-400 max-w-3xl mx-auto"
+            className="text-base sm:text-lg lg:text-xl text-gray-400 max-w-3xl mx-auto px-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -136,11 +136,11 @@ export default function PremiumFeaturesSection() {
         </motion.div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 md:gap-10 lg:gap-12 max-w-6xl mx-auto px-4 sm:px-6">
           {features.map((feature, index) => (
             <motion.div
               key={index}
-              className={`relative p-8 rounded-2xl bg-gradient-to-br from-[#0A0A0A] to-[#0F0A0A] border border-white/5 
+              className={`relative p-6 sm:p-8 rounded-xl sm:rounded-2xl bg-gradient-to-br from-[#0A0A0A] to-[#0F0A0A] border border-white/5 
                 hover:border-[#F44336]/30 transition-all duration-500 group`}
               initial={{ opacity: 0, y: 30, rotate: index % 2 === 0 ? -1 : 1 }}
               whileInView={{ 
@@ -162,7 +162,7 @@ export default function PremiumFeaturesSection() {
             >
               {/* Feature Icon */}
               <motion.div 
-                className="w-16 h-16 rounded-xl bg-[#0F0A0A] border border-[#F44336]/20 flex items-center justify-center mb-6 group-hover:bg-[#1A0F0F] transition-colors duration-300"
+                className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-lg sm:rounded-xl bg-[#0F0A0A] border border-[#F44336]/20 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-[#1A0F0F] transition-colors duration-300"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ 
                   opacity: 1, 
@@ -179,10 +179,10 @@ export default function PremiumFeaturesSection() {
                 </div>
               </motion.div>
 
-              <h3 className="text-2xl font-bold font-eurostile tracking-wide text-[#F44336] mb-3">
+              <h3 className="text-xl sm:text-2xl font-bold font-eurostile tracking-wide text-[#F44336] mb-2 sm:mb-3">
                 {feature.title}
               </h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="text-sm sm:text-base text-gray-400 leading-relaxed">
                 {feature.description}
               </p>
 
@@ -194,7 +194,7 @@ export default function PremiumFeaturesSection() {
 
         {/* CTA Button */}
         <motion.div 
-          className="text-center mt-20"
+          className="text-center mt-12 sm:mt-16 md:mt-20 px-4"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -206,11 +206,11 @@ export default function PremiumFeaturesSection() {
               boxShadow: '0 0 18px #F44336'
             }}
             whileTap={{ scale: 0.98 }}
-            className="relative overflow-hidden px-10 py-4 rounded-full border border-[#F44336]/60 text-[#F44336] font-eurostile font-bold tracking-wider group"
+            className="relative overflow-hidden px-6 sm:px-8 md:px-10 py-3 sm:py-4 rounded-full border border-[#F44336]/60 text-sm sm:text-base text-[#F44336] font-eurostile font-bold tracking-wider group"
           >
             <span className="relative z-10 flex items-center gap-2">
               EXPLORE ALL FEATURES
-              <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 group-hover:translate-x-1 transition-transform" />
             </span>
             <span className="absolute inset-0 rounded-full border border-[#F44336]/40 animate-pulse-glow" />
           </motion.button>

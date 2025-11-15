@@ -43,20 +43,20 @@ export default function Hero() {
       <SocialRail />
 
       {/* Content */}
-      <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-4">
+      <div className="relative z-20 flex flex-col items-center justify-center h-full text-center px-4 sm:px-6">
         <div
-          className={`space-y-6 transition-opacity duration-1000 ${
+          className={`space-y-4 sm:space-y-6 transition-opacity duration-1000 ${
             isVisible ? 'opacity-100' : 'opacity-0'
           }`}
         >
           {/* Headline */}
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-wider text-white uppercase font-eurostile">
+          <h1 className="text-4xl xs:text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold tracking-wider text-white uppercase font-eurostile">
             AI Agents?
           </h1>
 
           {/* Sub-headline */}
-          <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold tracking-wider text-white uppercase font-eurostile leading-[0.9]">
-            <div className="mb-1">THEY WORK</div>
+          <h2 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-wider text-white uppercase font-eurostile leading-[0.9]">
+            <div className="mb-1 sm:mb-2">THEY WORK</div>
             <div className="relative flex items-center justify-center">
               <motion.span
                 className="inline-block"
@@ -73,13 +73,13 @@ export default function Hero() {
               >
                 YOU
               </motion.span>
-              <span className="ml-2">SLEEP</span>
+              <span className="ml-1 sm:ml-2">SLEEP</span>
             </div>
           </h2>
 
           {/* CTA Button */}
-          <div className="pt-8">
-            <button className="px-8 py-4 bg-white text-black font-eurostile font-bold text-lg tracking-wide hover:bg-red-500 hover:text-white transition-all duration-300 uppercase">
+          <div className="pt-4 sm:pt-6 md:pt-8">
+            <button className="px-6 py-3 sm:px-8 sm:py-4 bg-white text-black font-eurostile font-bold text-base sm:text-lg tracking-wide hover:bg-red-500 hover:text-white transition-all duration-300 uppercase">
               Get Started
             </button>
           </div>
