@@ -23,7 +23,6 @@ export default function Hero() {
   return (
     <section className="relative w-full h-screen overflow-hidden">
       {/* Video Background */}
-      {/* Note: Ensure the video file exists at /public/video/hero-bg.mp4 */}
       <video
         ref={videoRef}
         autoPlay
@@ -33,7 +32,7 @@ export default function Hero() {
         preload="auto"
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="/video/hero-bg.mp4" type="video/mp4" />
+        <source src="/video/unicorn-1763210443879.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
 
@@ -42,27 +41,29 @@ export default function Hero() {
 
       {/* Scanline Overlay */}
       <div 
-        className="absolute inset-0 z-10 opacity-10 pointer-events-none"
+        className="absolute inset-0 z-10 opacity-20 pointer-events-none"
         style={{
-          backgroundImage: 'repeating-linear-gradient(0deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 1px, transparent 1px, transparent 2px)',
+          backgroundImage: 'repeating-linear-gradient(0deg, rgba(244, 67, 54, 0.15) 0px, rgba(244, 67, 54, 0.15) 1px, transparent 1px, transparent 2px)',
           backgroundSize: '100% 4px',
-          animation: 'scan 25s linear infinite',
+          animation: 'scan 15s linear infinite',
         }}
       />
 
       {/* Floating Particles */}
       <div className="absolute inset-0 z-10 overflow-hidden">
-        {Array.from({ length: 20 }).map((_, i) => (
+        {Array.from({ length: 30 }).map((_, i) => (
           <div
             key={i}
-            className="absolute rounded-full bg-[#F44336] opacity-20"
+            className="absolute rounded-full bg-[#F44336]"
             style={{
-              width: `${Math.random() * 4 + 1}px`,
-              height: `${Math.random() * 4 + 1}px`,
+              width: `${Math.random() * 6 + 2}px`,
+              height: `${Math.random() * 6 + 2}px`,
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animation: `float_xs ${6 + Math.random() * 10}s ease-in-out infinite`,
-              animationDelay: `${Math.random() * 5}s`,
+              opacity: 0.3 + Math.random() * 0.4,
+              animation: `float_xs ${8 + Math.random() * 15}s ease-in-out infinite`,
+              animationDelay: `${Math.random() * 10}s`,
+              filter: 'drop-shadow(0 0 2px rgba(244, 67, 54, 0.8))',
             }}
           />
         ))}
