@@ -41,3 +41,22 @@
   }
 }
 
+/* Hero Section Animations */
+@keyframes scan {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100%; }
+}
+
+@keyframes float_xs {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  50% { transform: translateY(-6px) translateX(4px); }
+}
+
+/* Ensure smooth animations */
+.animate-float {
+  animation: float_xs 6s ease-in-out infinite;
+}
+
+.animate-scan {
+  animation: scan 25s linear infinite;
+}

@@ -23,6 +23,7 @@ export default function Hero() {
   return (
     <section className="relative w-full h-screen overflow-hidden">
       {/* Video Background */}
+      {/* Note: Ensure the video file exists at /public/video/hero-bg.mp4 */}
       <video
         ref={videoRef}
         autoPlay
@@ -32,12 +33,40 @@ export default function Hero() {
         preload="auto"
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="/video/unicorn-1763210443879.webm" type="video/webm" />
+        <source src="/video/hero-bg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
       {/* Dark Overlay */}
       <div className="absolute inset-0 bg-black/40 z-10" />
+
+      {/* Scanline Overlay */}
+      <div 
+        className="absolute inset-0 z-10 opacity-10 pointer-events-none"
+        style={{
+          backgroundImage: 'repeating-linear-gradient(0deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 1px, transparent 1px, transparent 2px)',
+          backgroundSize: '100% 4px',
+          animation: 'scan 25s linear infinite',
+        }}
+      />
+
+      {/* Floating Particles */}
+      <div className="absolute inset-0 z-10 overflow-hidden">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-[#F44336] opacity-20"
+            style={{
+              width: `${Math.random() * 4 + 1}px`,
+              height: `${Math.random() * 4 + 1}px`,
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+              animation: `float_xs ${6 + Math.random() * 10}s ease-in-out infinite`,
+              animationDelay: `${Math.random() * 5}s`,
+            }}
+          />
+        ))}
+      </div>
 
       {/* Social Rail */}
       <SocialRail />
